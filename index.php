@@ -84,23 +84,21 @@ include_once './app/php/php.php'
 		</form>
 </section>
 </section>
+<!-- array keys komanda padejo mums vietoje table head irasymo i html, ikelti table head tiesiogiai is php. usersData[0] nurodo, kad masyvas su name age ir t.t nesikartotu -->
 			<section>
 			<table>
-						<tr>
-							<th>Name</th>
-							<th>Age</th>
-							<th>Address</th>
-							<th>Url</th>
-						</tr>	
+				<thead>
+				<?php foreach (array_keys($usersData[0]) as $userinfo):?> 
+					<th><?php print $userinfo; ?></th>
+					<?php endforeach; ?>
+				</thead>
 			<?php foreach ($usersData as $value):?>
-
-
-						
+<!-- idejome img taga ir i ji php print value komanda, kad rodytu nuotraukas salia esanciu asmenu prie ju informacijos -->
 						<tr>
 							<td><?php print $value['name'];?></td>
 							<td><?php print $value['age'];?></td>
 							<td><?php print $value['address'];?></td>
-							<td><?php print $value['url'];?></td>
+							<td><img src="<?php print $value['url'];?>" alt=""></td>
 						</tr>
 
 			<?php endforeach; ?>
